@@ -6,6 +6,7 @@ plot3 <- function () {
      # load the hms library for proper handling of the Time column
      library(hms)
      library("data.table")
+     library(dplyr)
      # Download the zipped dataset if necessary
      if (!file.exists("./exdata_data_household_power_consumption.zip")) {
           message("Downloading dataset")
@@ -68,6 +69,8 @@ plot3 <- function () {
             lwd = c(1,1))
      dev.off()
 }
+
+plot3
 
      
      
