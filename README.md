@@ -94,3 +94,7 @@ The four required plots are shown below.
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
 
+## Running the code
+The four R scripts all contain a line setting the working directory. Edit that to reflect your own working directory.
+
+Each script defines a function plot<sub>i</sub>, i in \[1:4\], to make it easier to run the script. From the R Console, simply type in plot<i>i</i>(), substituting the desired value of i, to run the script. Don't forget the parenthesis! Otherwise, Studio will just list the script.
