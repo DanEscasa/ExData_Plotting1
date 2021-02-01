@@ -7,6 +7,11 @@ plot1 <- function () {
      setwd("/home/daniel/Documents/Coursera/EDA.JH/EDA.Plotting01/")
      print(utils::sessionInfo()[2])
      
+     # load the hms library for proper handling of the Time column
+     library(hms)
+     library("data.table")
+     library(dplyr)
+     
      # Download the zipped dataset if necessary
      if (!file.exists("./exdata_data_household_power_consumption.zip")) {
           message("Downloading dataset")
