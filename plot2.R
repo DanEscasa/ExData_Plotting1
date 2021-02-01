@@ -54,7 +54,7 @@ plot2 <- function () {
      png("plot2.png", width=480, height=480)
      plot(x    = dataOfInterest$dateTime,
           y    = dataOfInterest$Global_active_power,
-          xlab = "Day",
+          xlab = "",
           ylab = "Global Active Power (kilowatts)",
           type = "l")
      dev.off()
