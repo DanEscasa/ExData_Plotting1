@@ -12,8 +12,8 @@ output:
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
 Learning Repository</a>, a popular repository for machine learning
-datasets. In particular, we will be using the "Individual household
-electric power consumption Data Set" which the professor has made available on
+datasets. In particular, we will be using the “Individual household
+electric power consumption Data Set” which the professor has made available on
 the course web site:
 
 
