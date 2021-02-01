@@ -44,7 +44,8 @@ web site</a>:
 
 ## Loading the data
 
-The most important consideration in manipulating the dataset is that the origin is the University of California at Irvine (UCI), and that therefore times are in that time zone (PST8PDT). Times encoded as “00:00:00” transform — in my case — to “16:00:00” PST(GMT+0800). Failure to adjust to PST8PDT results in graphs different from those in the repository from which this one was forked.
+The most important consideration in manipulating the dataset is that the origin is UCI, and that therefore times are in that time zone (PST8PDT). Times encoded as “00:00:00” transform — in my case — to “16:00:00” PST(GMT+0800). Failure to adjust to PST8PDT results in graphs different from those in the repository from which this one was forked.<p>
+In that sense, this is an extension of the Data Cleaning Course.
 
 ## Making Plots
 
