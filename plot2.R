@@ -52,11 +52,13 @@ plot2 <- function () {
      
      # create the plot 
      png("plot2.png", width=480, height=480)
-     plot(x    = dataOfInterest$dateTime,
-          y    = dataOfInterest$Global_active_power,
-          xlab = "",
-          ylab = "Global Active Power (kilowatts)",
-          type = "l")
+     with(dataOfInterest, {
+          plot(x    = dateTime,
+               y    = Global_active_power,
+               xlab = "",
+               ylab = "Global Active Power (kilowatts)",
+               type = "l")
+          })
      dev.off()
      print("Done!")
 }
