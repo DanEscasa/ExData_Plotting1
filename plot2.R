@@ -12,8 +12,8 @@ plot2 <- function () {
           message("Downloading dataset")
           download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip", 
                         destfile = "./UCI_HAR_Dataset.zip",  
-                        method = "internal", 
-                        mode = "wb")
+                        method   = "internal", 
+                        mode     = "wb")
      }
      
      # Unzip the dataset if necessary
@@ -26,23 +26,16 @@ plot2 <- function () {
      consumption <- read.table("household_power_consumption.txt", 
                                stringsAsFactors = FALSE, 
                                header = TRUE,
-                               sep =";",
+                               sep    = ";",
                                # “?” are treated as NA
                                na.strings = "?")
      
-     # convert the columns to the appropriate type.
+     # Add a column to combine Date and Time
      # Yes, I'm obsessed with mutate()
      consumption <- consumption %>% 
-          mutate("Global_active_power"   = as.numeric(Global_active_power),
-                 "Global_reactive_power" = as.numeric(Global_reactive_power),
-                 "Voltage"               = as.numeric(Voltage),
-                 "Global_intensity"      = as.numeric(Global_intensity),
-                 "Sub_metering_1"        = as.numeric(Sub_metering_1),
-                 "Sub_metering_2"        = as.numeric(Sub_metering_2),
-                 "Sub_metering_3"        = as.numeric(Sub_metering_3),
-                 "dateTime"              = as.POSIXct(paste(Date, Time),
-                                                      tz     = "PST8PDT", 
-                                                      format = "%d/%m/%Y %H:%M:%S"))
+          mutate("dateTime" = as.POSIXct(paste(Date, Time),
+                                         tz     = "PST8PDT", 
+                                         format = "%d/%m/%Y %H:%M:%S"))
 
      # filter out dates not of interest
      # as.Date() needed to extract the date part of the column dateTime
@@ -51,12 +44,14 @@ plot2 <- function () {
                               as.Date(dateTime, tz = "PST8PDT") =="2007-02-02")
      
      # create the plot 
-     png("plot2.png", width=480, height=480)
-     plot(x    = dataOfInterest$dateTime,
-          y    = dataOfInterest$Global_active_power,
-          xlab = "",
-          ylab = "Global Active Power (kilowatts)",
-          type = "l")
+     png("plot2.png", width = 480, height = 480)
+     with(dataOfInterest, {
+          plot(x    = dateTime,
+               y    = Global_active_power,
+               xlab = "",
+               ylab = "Global Active Power (kilowatts)",
+               type = "l")
+          })
      dev.off()
      print("Done!")
 }
