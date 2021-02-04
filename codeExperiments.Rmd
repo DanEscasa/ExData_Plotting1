@@ -1,0 +1,46 @@
+---
+title: "Experiments"
+author: "Daniel Escasa"
+date: "February 4, 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+consumption <- read.table("household_power_consumption.txt", 
+                          stringsAsFactors = FALSE, 
+                          header = TRUE,
+                          sep    = ";",
+                          # “?” are treated as NA
+                          na.strings = "?")
+```
+
+```{r}
+consumption <- consumption %>%
+     mutate("dateTime" = as.POSIXct(paste(Date, Time),
+                                    tz     = "PST8PDT", 
+                                    format = "%d/%m/%Y %H:%M:%S"))
+
+dataOfInterest <- subset(consumption, 
+                              as.Date(dateTime, tz = "PST8PDT") == "2007-02-01" |
+                              as.Date(dateTime, tz = "PST8PDT") == "2007-02-02")
+```
+
+```{r}
+     # create the plot 
+     png("plot2.png", width = 480, height = 480)
+     with(dataOfInterest, {
+          plot(x    = dateTime,
+               y    = Global_active_power,
+               xlab = "",
+               ylab = "Global Active Power (kilowatts)",
+               type = "l")
+          })
+     dev.off()
+     print("Done!")
+```
+
